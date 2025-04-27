@@ -6,7 +6,9 @@
   <title>Mein Lieblingsplatz - Mama</title>
   <style>
     :root {
-      --coming-soon: flex; /* <<< HIER Steuerung: flex = Coming Soon aktiv, none = Coming Soon deaktiviert */
+      --coming-soon: flex; /* flex = Coming Soon aktiv, none = Coming Soon deaktiviert */
+      --link-url: "#"; /* "#" (Platzhalter) oder dein echter Amazon-Link */
+      --pointer-events: none; /* none = nicht klickbar, auto = klickbar */
     }
 
     body {
@@ -29,7 +31,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s;
-      pointer-events: var(--pointer-events-img, none);
+      pointer-events: var(--pointer-events);
     }
     img:hover {
       transform: scale(1.02);
@@ -47,7 +49,7 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
       transition: background 0.3s, transform 0.2s;
-      pointer-events: var(--pointer-events-button, none);
+      pointer-events: var(--pointer-events);
     }
     a.button:hover {
       background: linear-gradient(#f0c14b, #e7b93f);
@@ -78,11 +80,11 @@
 <body>
 
   <div class="content">
-    <a href="#">
+    <a id="imageLink" href="#">
       <img src="cover.jpg" alt="Mein Lieblingsplatz - Mama">
     </a>
 
-    <a class="button" href="#">Jetzt auf Amazon ansehen</a>
+    <a id="buttonLink" class="button" href="#">Jetzt auf Amazon ansehen</a>
   </div>
 
   <div class="disclaimer">
@@ -92,6 +94,17 @@
   <div class="overlay">
     Coming Soon...
   </div>
+
+  <script>
+    // Automatische Aktualisierung der Links und Klickbarkeit
+    const realLink = "DEIN-AMAZON-AFFILIATE-LINK-HIER"; // <-- DEIN ECHTER LINK
+
+    if (getComputedStyle(document.documentElement).getPropertyValue('--coming-soon').trim() === 'none') {
+      document.getElementById('imageLink').href = realLink;
+      document.getElementById('buttonLink').href = realLink;
+      document.documentElement.style.setProperty('--pointer-events', 'auto');
+    }
+  </script>
 
 </body>
 </html>
