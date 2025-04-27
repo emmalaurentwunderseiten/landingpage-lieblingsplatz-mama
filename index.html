@@ -12,15 +12,24 @@
       background-color: #fff;
       text-align: center;
     }
+    .content {
+      display: inline-block;
+      max-width: 600px;
+      width: 100%;
+    }
     img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 12px;
-      margin-bottom: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+    img:hover {
+      transform: scale(1.02);
     }
     a.button {
-      display: inline-block;
+      display: block;
+      margin: 20px auto 0 auto;
       padding: 15px 30px;
       background-color: #ff9900;
       color: white;
@@ -40,11 +49,14 @@
   </style>
 </head>
 <body>
-  <a href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">
-    <img src="cover.jpg" alt="Mein Lieblingsplatz - Mama">
-  </a>
-  
-  <a class="button" href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">Zum Buch</a>
+
+  <div class="content">
+    <a href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">
+      <img src="cover.jpg" alt="Mein Lieblingsplatz - Mama">
+    </a>
+
+    <a class="button" href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">Zum Buch</a>
+  </div>
 
   <div class="disclaimer">
     Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.
