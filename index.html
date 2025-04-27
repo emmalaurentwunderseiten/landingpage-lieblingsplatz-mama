@@ -11,6 +11,8 @@
       font-family: Arial, sans-serif;
       background-color: #fff;
       text-align: center;
+      position: relative;
+      overflow-x: hidden;
     }
     .content {
       display: inline-block;
@@ -23,6 +25,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s;
+      pointer-events: none; /* Bild nicht klickbar */
     }
     img:hover {
       transform: scale(1.02);
@@ -40,19 +43,26 @@
       border-radius: 8px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.15);
       transition: background 0.3s, transform 0.2s;
+      pointer-events: none; /* Button nicht klickbar */
     }
     a.button:hover {
       background: linear-gradient(#f0c14b, #e7b93f);
       transform: translateY(-2px);
     }
-    .stars {
-      margin-top: 15px;
-      font-size: 1.2em;
-      color: #ffa41c;
-    }
-    .stars small {
-      font-size: 0.8em;
-      color: #555;
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
+      z-index: 1000;
+      text-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
     .disclaimer {
       margin-top: 30px;
@@ -64,20 +74,19 @@
 <body>
 
   <div class="content">
-    <a href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">
+    <a href="#">
       <img src="cover.jpg" alt="Mein Lieblingsplatz - Mama">
     </a>
 
-    <a class="button" href="DEIN-AMAZON-AFFILIATE-LINK" target="_blank">Jetzt auf Amazon ansehen</a>
-    <!--
-    <div class="stars">
-      ★★★★☆ <br><small>4,8 von 5 Sternen</small>
-    </div>
-    -->
+    <a class="button" href="#">Jetzt auf Amazon ansehen</a>
   </div>
 
   <div class="disclaimer">
     Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.
+  </div>
+
+  <div class="overlay">
+    Coming Soon...
   </div>
 
 </body>
