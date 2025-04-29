@@ -69,6 +69,26 @@
       z-index: 1000;
       text-shadow: 0 0 5px rgba(0,0,0,0.3);
     }
+    .banner {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #ff9900;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: pulse 2s infinite;
+      z-index: 1001;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
     .disclaimer {
       margin-top: 30px;
       font-size: 0.8em;
@@ -94,15 +114,19 @@
     Coming Soon...
   </div>
 
+  <div class="banner" id="liveBanner">
+    Jetzt verfügbar! 🎉
+  </div>
+
   <script>
     // Trage hier deinen echten Amazon Affiliate-Link ein:
     const realLink = "https://amzn.to/3GtHSfX";
 
-    // Prüfen ob Coming Soon deaktiviert ist
     if (getComputedStyle(document.documentElement).getPropertyValue('--coming-soon').trim() === 'none') {
       document.getElementById('imageLink').href = realLink;
       document.getElementById('buttonLink').href = realLink;
       document.documentElement.style.setProperty('--pointer-events', 'auto');
+      document.getElementById('liveBanner').style.display = 'block'; // Banner sichtbar machen
     }
   </script>
 
