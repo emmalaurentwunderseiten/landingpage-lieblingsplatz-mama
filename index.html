@@ -7,7 +7,6 @@
   <style>
     :root {
       --coming-soon: none; /* flex = Coming Soon aktiv, none = Coming Soon deaktiviert */
-      --link-url: "https://amzn.to/3GtHSfX"; /* "#" (Platzhalter) oder dein echter Amazon-Link */
       --pointer-events: auto; /* none = nicht klickbar, auto = klickbar */
     }
 
@@ -96,9 +95,10 @@
   </div>
 
   <script>
-    // Automatische Aktualisierung der Links und Klickbarkeit
-    const realLink = "DEIN-AMAZON-AFFILIATE-LINK-HIER"; // <-- DEIN ECHTER LINK
+    // Trage hier deinen echten Amazon Affiliate-Link ein:
+    const realLink = "https://amzn.to/3GtHSfX";
 
+    // Prüfen ob Coming Soon deaktiviert ist
     if (getComputedStyle(document.documentElement).getPropertyValue('--coming-soon').trim() === 'none') {
       document.getElementById('imageLink').href = realLink;
       document.getElementById('buttonLink').href = realLink;
