@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mein Lieblingsplatz - Mama</title>
+  <script defer data-domain="emmalaurentwunderseiten.github.io" src="https://plausible.io/js/script.js"></script>
   <style>
     :root {
       --coming-soon: none; /* flex = Coming Soon aktiv, none = Coming Soon deaktiviert */
       --pointer-events: auto; /* none = nicht klickbar, auto = klickbar */
     }
-
     body {
       margin: 0;
       padding: 20px;
@@ -102,7 +102,6 @@
     <a id="imageLink" href="#">
       <img src="cover.jpg" alt="Mein Lieblingsplatz - Mama">
     </a>
-
     <a id="buttonLink" class="button" href="#">Jetzt auf Amazon ansehen</a>
   </div>
 
@@ -119,14 +118,21 @@
   </div>
 
   <script>
-    // Trage hier deinen echten Amazon Affiliate-Link ein:
     const realLink = "https://www.amazon.de/dp/B0F6SZ7CP1?tag=emmalaurent-21";
 
     if (getComputedStyle(document.documentElement).getPropertyValue('--coming-soon').trim() === 'none') {
       document.getElementById('imageLink').href = realLink;
       document.getElementById('buttonLink').href = realLink;
       document.documentElement.style.setProperty('--pointer-events', 'auto');
-      document.getElementById('liveBanner').style.display = 'block'; // Banner sichtbar machen
+      document.getElementById('liveBanner').style.display = 'block';
+
+      // Klicktracking mit Plausible
+      document.getElementById('imageLink').addEventListener('click', () => {
+        plausible('Amazon-Link', { props: { source: 'image' } });
+      });
+      document.getElementById('buttonLink').addEventListener('click', () => {
+        plausible('Amazon-Link', { props: { source: 'button' } });
+      });
     }
   </script>
 
